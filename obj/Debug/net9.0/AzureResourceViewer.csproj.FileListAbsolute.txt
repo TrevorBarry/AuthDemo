@@ -128,3 +128,4 @@ C:\Dropbox\Work\Small Courses\AZ-2006 Automate Azure Load Testing by using GitHu
 C:\Dropbox\Work\Small Courses\AZ-2006 Automate Azure Load Testing by using GitHub Actions\AuthDemo\obj\Debug\net9.0\AzureResourceViewer.pdb
 C:\Dropbox\Work\Small Courses\AZ-2006 Automate Azure Load Testing by using GitHub Actions\AuthDemo\obj\Debug\net9.0\AzureResourceViewer.genruntimeconfig.cache
 C:\Dropbox\Work\Small Courses\AZ-2006 Automate Azure Load Testing by using GitHub Actions\AuthDemo\obj\Debug\net9.0\ref\AzureResourceViewer.dll
+C:\Dropbox\Work\Small Courses\AZ-2006 Automate Azure Load Testing by using GitHub Actions\AuthDemo\obj\Debug\net9.0\AzureResourceViewer.sourcelink.json

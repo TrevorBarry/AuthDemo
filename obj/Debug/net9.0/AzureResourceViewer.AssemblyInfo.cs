@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AzureResourceViewer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d554a333d881cd74edd69ae47198b15ae6d35f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("AzureResourceViewer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AzureResourceViewer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
