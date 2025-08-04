@@ -1,0 +1,115 @@
+@model List<AzureResourceViewer.Models.ResourceGroupViewModel>
+@{
+    ViewData["Title"] = "Azure Resource Groups";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-4">Azure Resource Groups</h1>
+            <p class="lead">Welcome, @User.Identity?.Name! Here are the Azure resource groups you have access to.</p>
+            
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            @if (Model == null || !Model.Any())
+            {
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">No Resource Groups Found</h4>
+                    <p>No resource groups were found in your Azure subscriptions. This could be because:</p>
+                    <ul>
+                        <li>You don't have any resource groups</li>
+                        <li>You don't have sufficient permissions to view resource groups</li>
+                        <li>The authentication configuration needs to be updated</li>
+                    </ul>
+                    <hr>
+                    <p class="mb-0">Please check your Azure permissions or contact your administrator.</p>
+                </div>
+            }
+            else
+            {
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Summary</h5>
+                                <p class="card-text">
+                                    <strong>Total Resource Groups:</strong> @Model.Count<br>
+                                    <strong>Total Resources:</strong> @Model.Sum(rg => rg.ResourceCount)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @foreach (var resourceGroup in Model)
+                    {
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <a href="@Url.Action("Resources", "ResourceGroups", new { subscriptionId = resourceGroup.SubscriptionId, resourceGroupName = resourceGroup.Name })" 
+                                           class="text-decoration-none">
+                                            @resourceGroup.Name
+                                        </a>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <strong>Location:</strong> @resourceGroup.Location<br>
+                                        <strong>Subscription ID:</strong> <small class="text-muted">@resourceGroup.SubscriptionId</small><br>
+                                        <strong>Resource Count:</strong> 
+                                        <span class="badge bg-primary">@resourceGroup.ResourceCount</span>
+                                    </p>
+                                    
+                                    @if (resourceGroup.CreatedDate.HasValue)
+                                    {
+                                        <p class="card-text">
+                                            <strong>Created:</strong> @resourceGroup.CreatedDate.Value.ToString("yyyy-MM-dd")
+                                        </p>
+                                    }
+
+                                    @if (resourceGroup.Tags.Any())
+                                    {
+                                        <div class="mt-2">
+                                            <strong>Tags:</strong><br>
+                                            @foreach (var tag in resourceGroup.Tags.Take(3))
+                                            {
+                                                <span class="badge bg-secondary me-1">@tag.Key: @tag.Value</span>
+                                            }
+                                            @if (resourceGroup.Tags.Count > 3)
+                                            {
+                                                <span class="badge bg-light text-dark">+@(resourceGroup.Tags.Count - 3) more</span>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                                <div class="card-footer">
+                                    <a href="@Url.Action("Resources", "ResourceGroups", new { subscriptionId = resourceGroup.SubscriptionId, resourceGroupName = resourceGroup.Name })" 
+                                       class="btn btn-primary btn-sm">
+                                        <i class="fas fa-eye"></i> View Resources
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-dismiss alerts after 5 seconds
+        setTimeout(function() {
+            $('.alert').alert('close');
+        }, 5000);
+    </script>
+}

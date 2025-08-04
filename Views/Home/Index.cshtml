@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Azure Resource Viewer";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-3 text-primary">
+                    <i class="fas fa-cloud"></i> Azure Resource Viewer
+                </h1>
+                <p class="lead">A secure way to view and explore your Azure resources</p>
+            </div>
+
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="fas fa-info-circle"></i> Getting Started
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        This application allows you to securely view your Azure resource groups and resources 
+                        using Microsoft Entra ID (Azure AD) authentication.
+                    </p>
+
+                    <h5><i class="fas fa-cog"></i> Setup Required</h5>
+                    <p>To use this application, you need to:</p>
+                    <ol>
+                        <li><strong>Configure Azure AD App Registration</strong> - Register this app in your Azure AD</li>
+                        <li><strong>Update Configuration</strong> - Add your Azure AD details to appsettings.json</li>
+                        <li><strong>Assign Permissions</strong> - Ensure your user has Reader access to Azure subscriptions</li>
+                    </ol>
+
+                    <div class="alert alert-info">
+                        <h6><i class="fas fa-terminal"></i> Quick Setup</h6>
+                        <p class="mb-2">Run the automated setup script (requires Azure CLI):</p>
+                        <code>.\setup-azuread.ps1</code>
+                    </div>
+
+                    <h5><i class="fas fa-shield-alt"></i> Security Features</h5>
+                    <ul>
+                        <li>Microsoft Entra ID authentication</li>
+                        <li>Azure RBAC integration</li>
+                        <li>Secure token handling</li>
+                        <li>HTTPS enforcement</li>
+                    </ul>
+
+                    <h5><i class="fas fa-eye"></i> What You Can View</h5>
+                    <ul>
+                        <li>All accessible Azure resource groups</li>
+                        <li>Resource counts per resource group</li>
+                        <li>Detailed resource information (name, type, location, creation date)</li>
+                        <li>Resource tags and metadata</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="/MicrosoftIdentity/Account/SignIn" class="btn btn-primary btn-lg">
+                        <i class="fas fa-sign-in-alt"></i> Sign In to Get Started
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="card-body text-center">
+                            <i class="fas fa-book fa-2x text-info mb-2"></i>
+                            <h6>Documentation</h6>
+                            <p class="small text-muted">Check the README.md file for detailed setup instructions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card border-0">
+                        <div class="card-body text-center">
+                            <i class="fas fa-github fa-2x text-secondary mb-2"></i>
+                            <h6>Source Code</h6>
+                            <p class="small text-muted">Built with .NET 9.0, ASP.NET Core, and Azure SDK</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
